@@ -3,12 +3,8 @@ package ru.qupol.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import ru.qupol.DAO.EmployeeDAO;
 import ru.qupol.Service.EmployeeService;
 import ru.qupol.entity.Employee;
 
@@ -23,8 +19,6 @@ import java.util.List;
 public class ActionController {
 
 
-    @Autowired
-    EmployeeDAO employeeDAO;
 
     @Autowired
     EmployeeService employeeService;
@@ -126,17 +120,18 @@ public class ActionController {
     }
 
     @RequestMapping("/search")
-    public ModelAndView search(){
-        return  new ModelAndView("search");
+    public ModelAndView search() {
+        return new ModelAndView("search");
     }
 
-    @RequestMapping(value = "/search",method = RequestMethod.POST)
-    public ModelAndView searchPost(@PathVariable("word")String word){
-        ModelAndView mav= new ModelAndView("search");
-        List emplList= employeeService.getListFirstNameStarts(word);
-        mav.addObject("employees",emplList);
-        return  mav;
+    @RequestMapping(value = "/search", method = RequestMethod.POST)
+    public ModelAndView searchPost(@RequestParam(value = "word", required = false) String word) {
+        ModelAndView mav = new ModelAndView("search");
+        List emplList = employeeService.getListStarts(word);
+        mav.addObject("employees", emplList);
+        return mav;
     }
+
 
 }
 

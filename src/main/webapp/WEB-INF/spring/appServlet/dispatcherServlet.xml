@@ -8,19 +8,18 @@
        http://www.springframework.org/schema/mvc/spring-mvc.xsd
        ">
 
-<!-- MVC annotation access -->
+    <!-- MVC annotation access -->
     <mvc:annotation-driven/>
 
     <mvc:default-servlet-handler/>
     <mvc:resources mapping="/style/**" location="/WEB-INF/style/"/>
-    <mvc:resources mapping="/script/**" location="/WEB-INF/script/"/>
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/pages/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
 
-    <import resource="controllers.xml" />
+    <import resource="controllers.xml"/>
 
 
 </beans>

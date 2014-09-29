@@ -15,7 +15,8 @@ import java.util.List;
 public class EmployeeServiceImpl implements EmployeeService {
 
 
-   @Autowired EmployeeDAO employeeDAO;
+    @Autowired
+    EmployeeDAO employeeDAO;
 
 
     @Transactional
@@ -33,13 +34,13 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Transactional
     @Override
     public void editEmployee(Employee employee) {
-         employeeDAO.editEmployee(employee);
+        employeeDAO.editEmployee(employee);
     }
 
     @Transactional
     @Override
     public void deleteEmployee(Long id) {
-       employeeDAO.deleteEmployee(employeeDAO.findEmployee(id));
+        employeeDAO.deleteEmployee(employeeDAO.findEmployee(id));
     }
 
     @Transactional
@@ -48,9 +49,16 @@ public class EmployeeServiceImpl implements EmployeeService {
         return employeeDAO.getListEmployee();
     }
 
+    @Transactional
     @Override
     public List<Employee> getListFirstNameStarts(String word) {
-        return employeeDAO.getListEmployeeLIKE("firstName",word);
+        return employeeDAO.getListEmployeeLIKE("firstName", word);
+    }
+
+    @Transactional
+    @Override
+    public List<Employee> getListStarts(String word) {
+        return employeeDAO.getListEmployeeLIKE(word);
     }
 
 

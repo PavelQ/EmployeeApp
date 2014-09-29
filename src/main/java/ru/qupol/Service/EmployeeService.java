@@ -10,14 +10,21 @@ import java.util.List;
 public interface EmployeeService {
     /**
      * finds the Employee by id
+     *
      * @param id of Employee
      * @return found Employee
      */
     public Employee findEmployee(Long id);
 
     public void addEmployee(Employee employee);
+
     public void editEmployee(Employee employee);
+
     public void deleteEmployee(Long id);
+
     public List<Employee> getListEmployee();
+
     public List<Employee> getListFirstNameStarts(String word);
+
+    public List<Employee> getListStarts(String word);
 }

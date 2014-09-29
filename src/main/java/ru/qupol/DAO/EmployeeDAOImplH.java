@@ -1,12 +1,12 @@
 package ru.qupol.DAO;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 import ru.qupol.entity.Employee;
 
 import javax.annotation.Resource;
-import org.hibernate.Query;
 import java.util.List;
 
 /**
@@ -18,7 +18,7 @@ public class EmployeeDAOImplH implements EmployeeDAO {
     @Resource
     private SessionFactory sessionFactory;
 
-    private Session getSession(){
+    private Session getSession() {
         return sessionFactory.getCurrentSession();
     }
 
@@ -60,11 +60,28 @@ public class EmployeeDAOImplH implements EmployeeDAO {
 
     @SuppressWarnings("unchecked")
     @Override
-    public List<Employee> getListEmployeeLIKE(String param, String start){
-      Query query= getSession().createQuery("SELECT employee  FROM  Employee  employee WHERE :par LIKE :lk");
-        query.setParameter("lk",start);
-        query.setParameter("par",param);
+    public List<Employee> getListEmployeeLIKE(String param, String start) {
+        Query query = getSession().createQuery("SELECT employee  FROM  Employee  employee WHERE :par LIKE :lk");
+        query.setParameter("lk", start + "%");
+        query.setParameter("par", param);
         return query.list();
     }
+
+    @SuppressWarnings("unchecked")
+    @Override
+    public List<Employee> getListEmployeeLIKE(String start) {
+        StringBuilder builder = new StringBuilder();
+        builder.append("FROM  Employee ");
+        builder.append(" WHERE");
+        builder.append(" (first_name LIKE :lk )");
+        builder.append(" or (second_name LIKE :lk )");
+        builder.append(" or (last_name LIKE :lk )");
+        builder.append(" or (description LIKE :lk )");
+        Query query = getSession().createQuery(builder.toString());
+        String toSearch = start + "%";
+        query.setParameter("lk", toSearch);
+        return query.list();
+    }
+
 
 }

@@ -8,27 +8,27 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
 <html>
 <head>
-    <LINK href="${pageContext.request.contextPath}/style/style.css" rel="stylesheet" type="text/css">
-    <title></title>
+    <title>view</title>
+
+    <LINK href="${pageContext.request.contextPath}/style/style.css" rel="stylesheet" type="text/css"/>
+
 </head>
 <body>
-<ul>
-    <li><a href="${pageContext.request.contextPath}/view">view</a></li>
-    <li><a href="${pageContext.request.contextPath}/CreateEmployee">create</a></li>
-</ul>
-<table>
+<%@include file="navigate.jsp"%>
+<table class="list">
     <tr>
-        <td>id</td>
-        <td>first name</td>
-        <td>second name</td>
-        <td>last name</td>
-        <td>age</td>
-        <td>experience</td>
-        <td>description</td>
-        <td>изменить</td>
-        <td>удалить</td>
+        <th>id</th>
+        <th>first name</th>
+        <th>second name</th>
+        <th>last name</th>
+        <th>age</th>
+        <th>experience</th>
+        <th>description</th>
+        <th>изменить</th>
+        <th>удалить</th>
     </tr>
     <c:forEach var="employee" items="${allEmployees}">
         <tr>
@@ -39,8 +39,8 @@
             <td>${employee.age}</td>
             <td>${employee.experience}</td>
             <td>${employee.description}</td>
-            <td><a href = "${pageContext.request.contextPath}/EditEmployee/${employee.id}"> edit</a></td>
-            <td><a href = "${pageContext.request.contextPath}/delete/${employee.id}">delete</a></td>
+            <td><a href="${pageContext.request.contextPath}/EditEmployee/${employee.id}"> edit</a></td>
+            <td><a href="${pageContext.request.contextPath}/delete/${employee.id}">delete</a></td>
         </tr>
     </c:forEach>
 </table>

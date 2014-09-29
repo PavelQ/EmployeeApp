@@ -7,7 +7,7 @@ import javax.persistence.Id;
 
 /**
  * Created by Pavel on 22.09.2014.
- *
+ * <p>
  * Main the Employee entity
  */
 @Entity
@@ -98,6 +98,6 @@ public class Employee {
 
     @Override
     public String toString() {
-        return getId()+getFirstName()+getSecondName()+getLastName()+getExperience()+getDescription()+getAge();
+        return getId() + getFirstName() + getSecondName() + getLastName() + getExperience() + getDescription() + getAge();
     }
 }

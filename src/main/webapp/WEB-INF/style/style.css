@@ -1,11 +1,29 @@
-table ,td{
+table, th, td {
     border: 2px solid black;
 
 }
-tr {
-    text-align: center;
+
+table {
+    width: 50%;
+    border-collapse: collapse;
+    position: relative;
+    left: 20%;
 }
 
-.navigate{
+tr {
+    text-align: center;
 
+}
+
+.list tr:nth-child(even) td {
+    background: palegreen;
+}
+
+.list th {
+    color: darkred;
+    background: lightyellow;
+}
+
+td input{
+    width: inherit;
 }

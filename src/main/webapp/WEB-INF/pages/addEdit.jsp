@@ -7,17 +7,18 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
 <html>
 <head>
-    <title></title>
+    <title>Employee</title>
+
+    <LINK href="${pageContext.request.contextPath}/style/style.css" rel="stylesheet" type="text/css"/>
+
 </head>
 <body>
-<ul>
-    <li><a href="${pageContext.request.contextPath}/view">view</a></li>
-    <li><a href="${pageContext.request.contextPath}/CreateEmployee">create</a></li>
-</ul>
-<form:form action="${navigate}" method="post"  modelAttribute="employee">
-<form:hidden path="id"/>
+<%@include file="navigate.jsp"%>
+<form:form action="${navigate}" method="post" modelAttribute="employee">
+    <form:hidden path="id"/>
     <table>
         <tr>
             <td><form:label path="firstName">first name</form:label></td>

@@ -9,9 +9,17 @@ import java.util.List;
  */
 public interface EmployeeDAO {
     public Employee findEmployee(Long id);
+
     public void addEmployee(Employee employee);
+
     public void editEmployee(Employee employee);
+
     public void deleteEmployee(Employee employee);
+
     public List<Employee> getListEmployee();
+
     public List<Employee> getListEmployeeLIKE(String param, String start);
+
+    public List<Employee> getListEmployeeLIKE(String start);
+
 }
